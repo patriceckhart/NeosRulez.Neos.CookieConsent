@@ -14,6 +14,13 @@ composer require neosrulez/neos-cookieconsent
 
 ### Neos Fusion
 
+#### The tags can look like this so that the cookie banner has an effect on them
+```html
+<iframe data-cookie="analysis" width="100%" cookie-src="https://www.youtube.com/embed/7KUdmFyefSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<script data-cookie="all" type="text/plain" async src="https://www.googletagmanager.com/gtag/js?id=UA-123123123-30"></script>
+<script data-cookie="all" type="text/plain">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "UA-123123123-30");</script>
+```
+
 #### Override the fusion configuration
 ```neosfusion
 prototype(NeosRulez.Neos.CookieConsent:Component.DialogContent) {
