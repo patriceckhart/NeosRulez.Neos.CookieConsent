@@ -1,0 +1,19 @@
+{
+    "description": "Cookie consent banner for Neos CMS and Neos Flow",
+    "type": "neos-package",
+    "name": "neosrulez/neos-cookieconsent",
+    "require": {
+        "neos/flow": "^8.3",
+        "neos/fusion": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "NeosRulez\\Neos\\CookieConsent\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "NeosRulez.Neos.CookieConsent"
+        }
+    }
+}

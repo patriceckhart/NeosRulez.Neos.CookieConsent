@@ -1,0 +1,18 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        NeosRulez.Neos.CookieConsent: true
+
+NeosRulez:
+  Neos:
+    CookieConsent:
+      dialog:
+        delay: 1500
+        positionX: center
+        positionY: center
+      bundle:
+        styles:
+          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/css/main.adc0658e.css'
+        scripts:
+          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/js/main.ca2a187c.js'

@@ -1,0 +1,72 @@
+prototype(NeosRulez.Neos.CookieConsent:Component.DialogContent) < prototype(Neos.Fusion:DataStructure) {
+    header = 'Cookies and external content'
+    text = 'We use cookies on our website. Some of them are essential, while others help us to improve this website and your experience. External content is e.g. that of Google Maps, YouTube or Vimeo and these can improve the user experience.'
+    additionalHeader = 'Cookies'
+    settings = Neos.Fusion:DataStructure {
+        bannerDelayTime = '1000'
+        showDeclineButton = true
+    }
+    buttons = Neos.Fusion:DataStructure {
+        settings = Neos.Fusion:DataStructure {
+            label = 'Settings'
+            additionalLabelText = 'Save Settings'
+        }
+        confirm = Neos.Fusion:DataStructure {
+            label = 'Accept all cookies incl. US partners'
+        }
+        decline = Neos.Fusion:DataStructure {
+            label = 'Reject all'
+        }
+    }
+    links = Neos.Fusion:DataStructure {
+        legalnotice = Neos.Fusion:DataStructure {
+            label = 'Legal notice'
+            href = '/legal-notice'
+        }
+        dataprivacy = Neos.Fusion:DataStructure {
+            label = 'Data privacy'
+            href = '/data-privacy'
+        }
+    }
+    groups = Neos.Fusion:DataStructure {
+        essential = Neos.Fusion:DataStructure {
+            name = 'Essential'
+            cookies = Neos.Fusion:DataStructure {
+                __cookie_consent = Neos.Fusion:DataStructure {
+                    description = 'This cookie must be set in order to call up your cookie settings and to either prohibit or allow cookies.'
+                    lifetime = '6 months'
+                }
+            }
+        }
+    }
+}
+
+prototype(Neos.Neos:Page) {
+
+    cookieConsent = Neos.Fusion:Component {
+
+        json = NeosRulez.Neos.CookieConsent:Component.DialogContent
+        json.@process.stringify = ${Json.stringify(value)}
+
+        styles = ${Configuration.setting('NeosRulez.Neos.CookieConsent.bundle.styles')}
+        scripts = ${Configuration.setting('NeosRulez.Neos.CookieConsent.bundle.scripts')}
+
+        delay = ${Configuration.setting('NeosRulez.Neos.CookieConsent.dialog.delay')}
+        positionX = ${Configuration.setting('NeosRulez.Neos.CookieConsent.dialog.positionX')}
+        positionY = ${Configuration.setting('NeosRulez.Neos.CookieConsent.dialog.positionY')}
+
+        renderer = afx`
+            <Neos.Fusion:Loop @if={props.styles && Array.length(props.styles) > 0} items={props.styles}>
+                <link rel="stylesheet" @children="attributes.href" media="print" onload="this.onload=null;this.removeAttribute('media');">
+                    <Neos.Fusion:ResourceUri path={item} />
+                </link>
+            </Neos.Fusion:Loop>
+            <div @if={props.json} id="cookieConsent" class="cookie-consent" data-delay={props.delay} data-position-x={props.positionX} data-position-y={props.positionY} data-json={props.json}></div>
+            <Neos.Fusion:Loop @if={props.scripts && Array.length(props.scripts) > 0} items={props.scripts}>
+                <script @children="attributes.src" async>
+                    <Neos.Fusion:ResourceUri path={item} />
+                </script>
+            </Neos.Fusion:Loop>
+        `
+    }
+}
