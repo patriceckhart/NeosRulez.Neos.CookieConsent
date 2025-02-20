@@ -8,7 +8,7 @@ import {
 } from "./ui/card"
 import Wrapper from './wrapper';
 
-export default function ConsentDialog(params: { setIsSettingsOpen: (isSettingsOpen: boolean) => void, allowAllCookies: () => void, declinedAllCookies: () => void, setIsOpen: (isOpen: boolean) => void, positionX: string | undefined, positionY: string | undefined, json: string | undefined }) {
+export default function ConsentDialog(params: { setIsSettingsOpen: (isSettingsOpen: boolean) => void, allowAllCookies: () => void, declinedAllCookies: () => void, setIsOpen: (isOpen: boolean) => void, positionX: string | undefined, positionY: string | undefined, disableDecline: string | undefined, json: string | undefined }) {
 
   const handleClick = (callback: () => void) => {
     callback();
@@ -31,7 +31,9 @@ export default function ConsentDialog(params: { setIsSettingsOpen: (isSettingsOp
         </CardContent>
         <CardFooter className="flex flex-col gap-3">
           <Button className="w-full shadow-none" variant="outline" onClick={() => params.setIsSettingsOpen(true)}>{buttons.settings.label}</Button>
-          <Button className="w-full shadow-none" variant="outline" onClick={() => handleClick(params.declinedAllCookies)}>{buttons.decline.label}</Button>
+          {(!params.disableDecline || (params.disableDecline !== 'true')) &&
+            <Button className="w-full shadow-none" variant="outline" onClick={() => handleClick(params.declinedAllCookies)}>{buttons.decline.label}</Button>
+          }
           <Button className="w-full shadow-none" onClick={() => handleClick(params.allowAllCookies)}>{buttons.confirm.label}</Button>
           <div className="flex flex-row items-center gap-3 mt-3 text-sm">
             <div>

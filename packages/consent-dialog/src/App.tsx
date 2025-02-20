@@ -7,7 +7,7 @@ import { cookieManager } from './lib/cookie-manager';
 import { CookieGroup } from './lib/interfaces';
 import { domModifier } from './lib/dom-modifier';
 
-export default function App(params: { delay: string | undefined, positionX: string | undefined, positionY: string | undefined, json: string | undefined }) {
+export default function App(params: { delay: string | undefined, positionX: string | undefined, positionY: string | undefined, disableDecline: string | undefined, json: string | undefined }) {
 
   const [initial, setInitial] = useState<boolean>(false);
   const [consent, setConsent] = useState<string | null>(null);
@@ -96,7 +96,7 @@ export default function App(params: { delay: string | undefined, positionX: stri
         <>
           {isOpen ?
             <>
-              {isSettingsOpen ? <SettingsDialog setIsSettingsOpen={setIsSettingsOpen} allowAllCookies={allowAllCookies} allowSelectedCookies={allowSelectedCookies} handleCookieChange={handleCookieChange} cookieGroups={cookieGroups} setIsOpen={setIsOpen} positionX={params.positionX} positionY={params.positionY} json={params.json} /> : <ConsentDialog setIsSettingsOpen={setIsSettingsOpen} allowAllCookies={allowAllCookies} declinedAllCookies={declinedAllCookies} setIsOpen={setIsOpen} positionX={params.positionX} positionY={params.positionY} json={params.json} />}
+              {isSettingsOpen ? <SettingsDialog setIsSettingsOpen={setIsSettingsOpen} allowAllCookies={allowAllCookies} allowSelectedCookies={allowSelectedCookies} handleCookieChange={handleCookieChange} cookieGroups={cookieGroups} setIsOpen={setIsOpen} positionX={params.positionX} positionY={params.positionY} json={params.json} /> : <ConsentDialog setIsSettingsOpen={setIsSettingsOpen} allowAllCookies={allowAllCookies} declinedAllCookies={declinedAllCookies} setIsOpen={setIsOpen} positionX={params.positionX} positionY={params.positionY} disableDecline={params.disableDecline} json={params.json} />}
             </>
             :
             <div className="fixed left-0 bottom-0 lg:ps-0 flex flex-col items-end ms-3 mb-3">

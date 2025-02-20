@@ -13,6 +13,6 @@ NeosRulez:
         positionY: center
       bundle:
         styles:
-          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/css/main.adc0658e.css'
+          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/css/main.1ccaaf61.css'
         scripts:
-          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/js/main.ca2a187c.js'
+          - 'resource://NeosRulez.Neos.CookieConsent/Public/bundle/static/js/main.19fe26e2.js'

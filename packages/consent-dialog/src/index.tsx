@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App delay={domElement.dataset.delay} positionX={domElement.dataset.positionX} positionY={domElement.dataset.positionY} json={domElement.dataset.json} />
+    <App delay={domElement.dataset.delay} positionX={domElement.dataset.positionX} positionY={domElement.dataset.positionY} disableDecline={domElement.dataset.disableDecline} json={domElement.dataset.json} />
   </React.StrictMode>
 );
 

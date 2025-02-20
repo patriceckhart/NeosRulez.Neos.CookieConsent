@@ -33,7 +33,7 @@ export default function SettingsDialog(params: { setIsSettingsOpen: (isSettingsO
           </Button>
         </CardHeader>
         <CardContent>
-          <div className="max-h-[50vh] p-4 overflow-y-auto border border-primary/10 rounded-lg flex flex-col gap-4">
+          <div className="cookie-group-container max-h-[50vh] p-4 overflow-y-auto border border-primary/10 rounded-lg flex flex-col gap-4">
             {Object.keys(groups).map((group: string) => (
               <Group key={group} name={groups[group].name} value={group} handleCookieChange={params.handleCookieChange} cookieGroups={params.cookieGroups} cookies={groups[group].cookies} />
             ))}
