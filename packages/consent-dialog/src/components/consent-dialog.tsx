@@ -37,10 +37,10 @@ export default function ConsentDialog(params: { setIsSettingsOpen: (isSettingsOp
           <Button className="w-full shadow-none" onClick={() => handleClick(params.allowAllCookies)}>{buttons.confirm.label}</Button>
           <div className="flex flex-row items-center gap-3 mt-3 text-sm">
             <div>
-              <a href={links.legalnotice.href} target="_blank" rel="noopener noreferrer">{links.legalnotice.label}</a>
+              <a href={links.legalnotice.href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:no-underline">{links.legalnotice.label}</a>
             </div>
             <div>
-              <a href={links.dataprivacy.href} target="_blank" rel="noopener noreferrer">{links.dataprivacy.label}</a>
+              <a href={links.dataprivacy.href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:no-underline">{links.dataprivacy.label}</a>
             </div>
           </div>
         </CardFooter>

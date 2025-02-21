@@ -63,7 +63,7 @@ prototype(Neos.Neos:Page) {
             </Neos.Fusion:Loop>
             <div @if={props.json} id="cookieConsent" class="cookie-consent" data-delay={props.delay} data-position-x={props.positionX} data-position-y={props.positionY} data-json={props.json}></div>
             <Neos.Fusion:Loop @if={props.scripts && Array.length(props.scripts) > 0} items={props.scripts}>
-                <script @children="attributes.src" async>
+                <script @children="attributes.src" defer>
                     <Neos.Fusion:ResourceUri path={item} />
                 </script>
             </Neos.Fusion:Loop>
