@@ -31,7 +31,7 @@
   --radius: 0.5rem;
 
   * {
-    @apply border-border font-sans antialiased text-foreground box-border border-0 border-solid;
+    @apply border-border font-sans antialiased box-border border-0 border-solid;
   }
   p {
     &:last-child {
