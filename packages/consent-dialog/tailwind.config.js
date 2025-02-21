@@ -1,3 +1,6 @@
+const { isolateInsideOfContainer } = require('tailwindcss-scoped-preflight')
+const { scopedPreflightStyles } = require('tailwindcss-scoped-preflight')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -56,5 +59,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    scopedPreflightStyles({
+      isolationStrategy: isolateInsideOfContainer('.cookie-consent', {
+        except: '.cookie-consent',
+        rootStyles: '.cookie-consent',
+      }),
+    }),
+  ],
 }
