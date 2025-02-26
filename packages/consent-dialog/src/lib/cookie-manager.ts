@@ -19,9 +19,9 @@ export const cookieManager = {
     return null
   },
 
-  setCookie: (name: string, value: string, options: CookieOptions) => {
-    const { expires, path, domain, secure } = options
-    const cookieString = `${name}=${value}; ${expires ? `expires=${expires.toUTCString()}` : ''}; ''; ${domain ? `domain=${domain}` : ''}; ${secure ? 'secure' : ''};`
+  setCookie: (name: string, value: string, options: CookieOptions = {}) => {
+    const { expires, domain, secure } = options
+    const cookieString = `${name}=${value}; path=/; ${expires ? `expires=${expires.toUTCString()}` : ''}; ${domain ? `domain=${domain}` : ''}; ${secure ? 'secure' : ''};`
     document.cookie = cookieString
   },
 

@@ -17,7 +17,13 @@ export const domModifier = (cookieGroups: CookieGroup[]) => {
 
     if (cookieGroup) {
       if (element.tagName.toLowerCase() === 'script' && element.getAttribute('type') === 'text/plain') {
-        element.setAttribute('type', 'text/javascript');
+        const newScript = document.createElement('script');
+        Array.from(element.attributes).forEach(attr => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        newScript.setAttribute('type', 'text/javascript');
+        newScript.textContent = element.textContent;
+        element.parentNode?.replaceChild(newScript, element);
       }
       if (element.tagName.toLowerCase() === 'iframe') {
         element.setAttribute('src', element.getAttribute('cookie-src') || '');
